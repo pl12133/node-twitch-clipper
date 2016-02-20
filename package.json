@@ -1,0 +1,35 @@
+{
+  "name": "node-twitch-clipper",
+  "version": "0.0.1",
+  "description": "A library to download Twitch.tv VODs and turn them into clips",
+  "main": "index.js",
+  "dependencies": {
+    "babel-register": "^6.5.2",
+    "fluent-ffmpeg": "^2.0.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "socket.io": "^1.4.5",
+    "stream": "0.0.2",
+    "stream-buffers": "^3.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pl12133/node-twitch-clipper.git"
+  },
+  "keywords": [
+    "twitch",
+    "node",
+    "webm"
+  ],
+  "author": "pl12133",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pl12133/node-twitch-clipper/issues"
+  },
+  "homepage": "https://github.com/pl12133/node-twitch-clipper#readme"
+}
