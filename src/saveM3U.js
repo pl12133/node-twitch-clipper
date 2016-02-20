@@ -1,7 +1,7 @@
 'use strict';
 let httpsRequest = require('./requests').httpsPromise;
 let httpRequest = require('./requests').httpPromise;
-let playlistToWebm = require('./playlistToWebm').promisePlaylistToWebm;
+let playlistToWebm = require('./playlistToWebm');
 let stream = require('stream');
 
 module.exports = saveM3U;
