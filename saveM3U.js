@@ -7,7 +7,10 @@ let stream = require('stream');
 module.exports = saveM3U;
 
 function saveM3U(vodIdStr, filename, startTime, duration) {
-  let vodId = parseInt(vodIdStr.substring(1));
+  let vodId = (/^[a-z]/i).test(vodIdStr)
+   ? parseInt(vodIdStr.substring(1))
+   : +vodIdStr;
+
   filename = filename || 'movie_' + vodId + '.webm';
   startTime = startTime || 0;
   duration = duration || 10;
