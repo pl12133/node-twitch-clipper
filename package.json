@@ -2,7 +2,7 @@
   "name": "node-twitch-clipper",
   "version": "0.0.1",
   "description": "A library to download Twitch.tv VODs and turn them into clips",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "babel-register": "^6.5.2",
     "fluent-ffmpeg": "^2.0.1",

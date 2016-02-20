@@ -1,7 +1,7 @@
 'use strict';
 let httpsRequest = require('./requests').httpsPromise;
 let httpRequest = require('./requests').httpPromise;
-let playlistToWebm = require('./playlistToWebm');
+let playlistToWebm = require('./playlistToWebm').promisePlaylistToWebm;
 let stream = require('stream');
 
 module.exports = saveM3U;
@@ -16,17 +16,23 @@ function saveM3U(vodIdStr, filename, startTime, duration) {
   duration = duration || 10;
 
   let urlPart = '';
-  getVodsAccessToken(vodId)
-    .then(getPlaylist.bind(null, vodId))
-    .then(getPlaylistURL)
-    .then(url => {
-      urlPart = url.substr(0, url.lastIndexOf('/') + 1);
-      return httpRequest(url)
-    })
-    .then(result => processPlaylist(urlPart, result))
-    .then(dataToReadstream)
-    .then(playlistToWebm.bind(null, filename, startTime, duration))
-    .catch(console.log.bind(console, 'getAccessToken ERR: '))
+  return new Promise(function(resolve, reject) { 
+    getVodsAccessToken(vodId)
+      .then(getPlaylist.bind(null, vodId))
+      .then(getPlaylistURL)
+      .then(url => {
+        urlPart = url.substr(0, url.lastIndexOf('/') + 1);
+        return httpRequest(url)
+      })
+      .then(result => processPlaylist(urlPart, result))
+      .then(dataToReadstream)
+      .then(playlistToWebm.bind(null, filename, startTime, duration))
+      .then(filename => {
+        console.log('Finished Converting to ' + filename);
+        resolve(filename);
+      })
+      .catch((err) => reject(err))
+  });
 }
 
 function getVodsAccessToken(vodId) {
