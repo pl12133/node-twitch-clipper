@@ -14,24 +14,26 @@ Create Webm clips from Twitch.tv VODs
 
 # Usage
 
+###### Visit [node-twitch-clipper-demo](https://github.com/pl12133/node-twitch-clipper-demo) for an example of `node-twitch-clipper` in action.
+
 Import `node-twitch-clipper`
 
     var saveVideo = require('/path/to/node-twitch-clipper/');
 
-## saveM3U(vodIdStr, [filename, startTime, duration]):
+### saveM3U(vodIdStr, [filename, startTime, duration])
 
-#### vodIdStr:
+##### vodIdStr
 
 The VOD ID found in a Twitch.tv URL, e.g. www.twitch.tv/nl_kripp/v/43245884 has the VOD ID of v43245884
 
-#### filename:
+##### filename
 
 The name of the file to save your clip to. Default is  ${vodIdStr}.webm
 
-#### startTime:
+##### startTime
 
 The time into the video to begin clipping. Format 'HH:MM:SS.SSS', eg. 5 minutes is '00:05:00.000'. Default is 0 (beginning of video).
 
-#### duration:
+##### duration
 
 The length of the clip to grab in seconds. e.g. 15 seconds is 15. Default is 15.
