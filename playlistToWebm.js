@@ -1,13 +1,13 @@
 'use strict';
 let ffmpeg = require('fluent-ffmpeg');
 
-module.exports = function playlistToWebm(filename, startTime, duration) {
-  let newFilename = filename.substring(0, filename.lastIndexOf('.') + 1) + 'webm';
-  console.log('Converting ' + filename + ' to ' + newFilename);
+module.exports = function playlistToWebm(filename, startTime, duration, stream) {
   startTime = startTime || 0;
   duration = duration || 10;
 
-  var command = ffmpeg(filename);
+  console.log('Trying to convert playlist to ' + filename);
+
+  var command = ffmpeg(stream);
   command
     .seekInput(startTime)
     .videoCodec('libvpx')
@@ -16,10 +16,10 @@ module.exports = function playlistToWebm(filename, startTime, duration) {
       console.error('FFmpeg Error: ', err);
     })
     .on('end', function() {
-      console.log(newFilename + ' saving finished');
+      console.log(filename + ' saving finished');
     })
     .on('progress', function(progress) {
       console.log('Processing: ' + progress.percent + '% done');
     })
-    .save(newFilename);
+    .save(filename);
 }
