@@ -1,5 +1,5 @@
 'use strict';
-let saveM3U = require('./funcSaveM3U');
+let saveM3U = require('./saveM3U');
 
 let argv = process.argv;
 let node = argv[0];
