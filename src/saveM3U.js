@@ -77,8 +77,3 @@ function dataToReadstream(data) {
   fileStream.end(file);
   return Promise.resolve(fileStream);
 }
-function streamToWebm(filename, dataStream) {
-  let newFilename = filename.substr(0, filename.lastIndexOf('.') + 1) + 'webm';
-  console.log('Trying to save to: ', newFilename);
-  playlistToWebm(newFilename, dataStream);
-}
